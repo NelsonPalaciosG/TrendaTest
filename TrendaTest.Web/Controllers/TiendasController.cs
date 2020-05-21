@@ -22,7 +22,7 @@ namespace TrendaTest.Web.Controllers
         // GET: Tiendas
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Tienda.ToListAsync());
+            return View(await _context.Tiendas.ToListAsync());
         }
 
         // GET: Tiendas/Details/5
@@ -33,7 +33,7 @@ namespace TrendaTest.Web.Controllers
                 return NotFound();
             }
 
-            var tienda = await _context.Tienda
+            var tienda = await _context.Tiendas
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (tienda == null)
             {
@@ -73,7 +73,7 @@ namespace TrendaTest.Web.Controllers
                 return NotFound();
             }
 
-            var tienda = await _context.Tienda.FindAsync(id);
+            var tienda = await _context.Tiendas.FindAsync(id);
             if (tienda == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace TrendaTest.Web.Controllers
                 return NotFound();
             }
 
-            var tienda = await _context.Tienda
+            var tienda = await _context.Tiendas
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (tienda == null)
             {
@@ -139,15 +139,15 @@ namespace TrendaTest.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var tienda = await _context.Tienda.FindAsync(id);
-            _context.Tienda.Remove(tienda);
+            var tienda = await _context.Tiendas.FindAsync(id);
+            _context.Tiendas.Remove(tienda);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool TiendaExists(int id)
         {
-            return _context.Tienda.Any(e => e.Id == id);
+            return _context.Tiendas.Any(e => e.Id == id);
         }
     }
 }

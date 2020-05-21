@@ -13,8 +13,8 @@ namespace TrendaTest.Web.Data
         {
         }
 
-        public DbSet<Tienda> Tienda { get; set; }
-
+        public DbSet<Tienda> Tiendas { get; set; }
+        public DbSet<Producto> Productos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

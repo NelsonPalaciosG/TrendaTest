@@ -14,5 +14,7 @@ namespace TrendaTest.Web.Data.Entities
         [MaxLength(50, ErrorMessage = "El {0} campo no puede tener mas de {1} caracteres.")]
         public string Nombre { get; set; }
 
+        public ICollection<Producto> Productos { get; set; }
+
     }
 }
