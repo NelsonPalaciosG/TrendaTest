@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrendaTest.Web", "TrendaTest.Web\TrendaTest.Web.csproj", "{69873EAB-9065-4622-9E7C-E168A423CAF1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{69873EAB-9065-4622-9E7C-E168A423CAF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69873EAB-9065-4622-9E7C-E168A423CAF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69873EAB-9065-4622-9E7C-E168A423CAF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69873EAB-9065-4622-9E7C-E168A423CAF1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BCC6D16-DB0E-4820-90AB-FDB8A848A51F}
+	EndGlobalSection
+EndGlobal
