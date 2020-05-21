@@ -54,7 +54,7 @@ namespace TrendaTest.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Nombre")] Tienda tienda)
+        public async Task<IActionResult> Create([Bind("Id,Nombre,FechaApertura")] Tienda tienda)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace TrendaTest.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre")] Tienda tienda)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Nombre,FechaApertura")] Tienda tienda)
         {
             if (id != tienda.Id)
             {

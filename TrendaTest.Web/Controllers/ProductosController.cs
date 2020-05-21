@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using TrendaTest.Web.Data;
 using TrendaTest.Web.Data.Entities;
 
@@ -33,7 +30,7 @@ namespace TrendaTest.Web.Controllers
                 return NotFound();
             }
 
-            var producto = await _context.Productos
+            Producto producto = await _context.Productos
                 .FirstOrDefaultAsync(m => m.Sku == id);
             if (producto == null)
             {
@@ -54,7 +51,7 @@ namespace TrendaTest.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Sku,Nombre,FechaApertura,Descripcion,Valor,PicturePath")] Producto producto)
+        public async Task<IActionResult> Create([Bind("Sku,Nombre,Descripcion,Valor,PicturePath")] Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +70,7 @@ namespace TrendaTest.Web.Controllers
                 return NotFound();
             }
 
-            var producto = await _context.Productos.FindAsync(id);
+            Producto producto = await _context.Productos.FindAsync(id);
             if (producto == null)
             {
                 return NotFound();
@@ -86,7 +83,7 @@ namespace TrendaTest.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Sku,Nombre,FechaApertura,Descripcion,Valor,PicturePath")] Producto producto)
+        public async Task<IActionResult> Edit(int id, [Bind("Sku,Nombre,Descripcion,Valor,PicturePath")] Producto producto)
         {
             if (id != producto.Sku)
             {
@@ -124,7 +121,7 @@ namespace TrendaTest.Web.Controllers
                 return NotFound();
             }
 
-            var producto = await _context.Productos
+            Producto producto = await _context.Productos
                 .FirstOrDefaultAsync(m => m.Sku == id);
             if (producto == null)
             {
@@ -139,7 +136,7 @@ namespace TrendaTest.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var producto = await _context.Productos.FindAsync(id);
+            Producto producto = await _context.Productos.FindAsync(id);
             _context.Productos.Remove(producto);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
