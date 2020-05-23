@@ -62,7 +62,7 @@ namespace TrendaTest.Web.Controllers
                     Descripcion = producto.Descripcion,
                     Nombre = producto.Nombre,
                     Valor = producto.Valor,
-                    PicturePath = "",
+                    PicturePath = "",   
                     Tienda = _context.Tiendas.FirstOrDefault(t => t.Nombre == producto.Tienda)
                 };
                 _context.Productos.Add(newProducto);

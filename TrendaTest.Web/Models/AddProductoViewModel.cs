@@ -23,7 +23,8 @@ namespace TrendaTest.Web.Models
         [Display(Name = "Imagen")]
         public string PicturePath { get; set; }
 
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "Nombre Tienda")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio, por favor verifique el nombre de la tienda.")]
         public string Tienda { get; set; }
     }
 }
