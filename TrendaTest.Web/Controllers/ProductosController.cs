@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TrendaTest.Web.Data;
 using TrendaTest.Web.Data.Entities;
+using TrendaTest.Web.Models;
 
 namespace TrendaTest.Web.Controllers
 {
@@ -51,11 +52,20 @@ namespace TrendaTest.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Sku,Nombre,Descripcion,Valor,PicturePath")] Producto producto)
+        public async Task<IActionResult> Create(AddProductoViewModel producto)
         {
+
             if (ModelState.IsValid)
             {
-                _context.Add(producto);
+                var newProducto = new Producto
+                {
+                    Descripcion = producto.Descripcion,
+                    Nombre = producto.Nombre,
+                    Valor = producto.Valor,
+                    PicturePath = "",
+                    Tienda = _context.Tiendas.FirstOrDefault(t => t.Nombre == producto.Tienda)
+                };
+                _context.Productos.Add(newProducto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

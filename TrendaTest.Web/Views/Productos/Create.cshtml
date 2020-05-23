@@ -1,4 +1,4 @@
-﻿@model TrendaTest.Web.Data.Entities.Producto
+﻿@model TrendaTest.Web.Models.AddProductoViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -32,9 +32,14 @@
                 <span asp-validation-for="PicturePath" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Tienda" class="control-label"></label>
+                <input asp-for="Tienda" class="form-control" />
+                <span asp-validation-for="Tienda" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-success">Atrás</a>
-            </div> 
+            </div>
         </form>
     </div>
 </div>
