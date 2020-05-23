@@ -1,5 +1,3 @@
-using System;
-
 namespace TrendaTest.Web.Models
 {
     public class ErrorViewModel

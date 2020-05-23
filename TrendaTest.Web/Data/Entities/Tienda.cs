@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace TrendaTest.Web.Data.Entities
 {
@@ -18,7 +16,7 @@ namespace TrendaTest.Web.Data.Entities
         [Display(Name = "Fecha de apertura")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [DataType(DataType.DateTime)]//modificar como se recibe la fecha a dd-mm-YYYY
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd hh:mm}", ApplyFormatInEditMode = false)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         public DateTime FechaApertura { get; set; }
 
         public ICollection<Producto> Productos { get; set; }

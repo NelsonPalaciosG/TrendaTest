@@ -113,31 +113,21 @@ namespace TrendaTest.Web.Controllers
             return View(producto);
         }
 
-        // GET: Productos/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? sku)
         {
-            if (id == null)
+            if (sku == null)
             {
                 return NotFound();
             }
 
-            Producto producto = await _context.Productos
-                .FirstOrDefaultAsync(m => m.Sku == id);
-            if (producto == null)
+            Producto model = await _context.Productos
+                .FirstOrDefaultAsync(m => m.Sku == sku);
+            if (model == null)
             {
                 return NotFound();
             }
 
-            return View(producto);
-        }
-
-        // POST: Productos/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            Producto producto = await _context.Productos.FindAsync(id);
-            _context.Productos.Remove(producto);
+            _context.Productos.Remove(model);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

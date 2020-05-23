@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using TrendaTest.Web.Data;
 using TrendaTest.Web.Data.Entities;
 
@@ -25,6 +22,14 @@ namespace TrendaTest.Web.Controllers
             return View(await _context.Tiendas.ToListAsync());
         }
 
+        public async Task<IActionResult> GetProductos()
+        {
+            return View(await _context.Productos
+                .Include(p => p.Tienda)
+                .OrderBy(p => p.Nombre)
+                .ToListAsync());
+        }
+
         // GET: Tiendas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -33,7 +38,7 @@ namespace TrendaTest.Web.Controllers
                 return NotFound();
             }
 
-            var tienda = await _context.Tiendas
+            Tienda tienda = await _context.Tiendas
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (tienda == null)
             {
@@ -73,7 +78,7 @@ namespace TrendaTest.Web.Controllers
                 return NotFound();
             }
 
-            var tienda = await _context.Tiendas.FindAsync(id);
+            Tienda tienda = await _context.Tiendas.FindAsync(id);
             if (tienda == null)
             {
                 return NotFound();
@@ -116,7 +121,7 @@ namespace TrendaTest.Web.Controllers
             return View(tienda);
         }
 
-        // GET: Tiendas/Delete/5
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,26 +129,18 @@ namespace TrendaTest.Web.Controllers
                 return NotFound();
             }
 
-            var tienda = await _context.Tiendas
+            Tienda model = await _context.Tiendas
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (tienda == null)
+            if (model == null)
             {
                 return NotFound();
             }
 
-            return View(tienda);
-        }
-
-        // POST: Tiendas/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var tienda = await _context.Tiendas.FindAsync(id);
-            _context.Tiendas.Remove(tienda);
+            _context.Tiendas.Remove(model);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
 
         private bool TiendaExists(int id)
         {
